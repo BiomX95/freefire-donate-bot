@@ -35,3 +35,7 @@ app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
 }); 
 добавил index.js
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => res.send("Бот работает!"));
+app.listen(process.env.PORT || 3000);
