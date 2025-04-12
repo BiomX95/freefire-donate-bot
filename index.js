@@ -39,9 +39,6 @@ app.post("/webhook", async (req, res) => {
 app.get("/", (req, res) => {
   res.send("Бот и сервер успешно работают на Railway!");
 });
-
-// запуск сервера
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
-});
+# python web server
+if __name__ == '__main__':
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
