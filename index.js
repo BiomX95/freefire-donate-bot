@@ -35,7 +35,23 @@ app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
 }); 
 добавил index.js
-const express = require("express");
+const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
 const app = express();
-app.get("/", (req, res) => res.send("Бот работает!"));
-app.listen(process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
+
+// Здесь логика твоего бота:
+const bot = new TelegramBot('8045713216:AAF3vRnsxHj427v40vr6vCApI8gvXN3SJ5E', { polling: true });
+
+bot.on('message', (msg) => {
+  bot.sendMessage(msg.chat.id, 'Бот работает!');
+});
+
+// Express сервер для Railway
+app.get('/', (req, res) => {
+  res.send('Бот успешно запущен на Railway!');
+});
+
+app.listen(port, () => {
+  console.log(`Сервер запущен на порту ${port}`);
+});
